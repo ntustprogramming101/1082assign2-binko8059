@@ -21,15 +21,19 @@ int gameState = 0;
 int soldierX = -soldierSize;
 int soldierY = floor(random(2,6))*grid;
 float soldierSpeed = 3;
-final int soldier_H = 80;
-final int soldier_W =80;
+final int soldier_H = 79;
+final int soldier_W =79;
+      float soldierUP = soldierY;
+      float soldierDOWN = soldierY+soldier_H;
+      float soldierLEFT = soldierX;
+      float soldierRIGHT = soldierX+soldier_W;
 
 //init a cabbage's position randomly
 int cabbageX  = floor(random(2,8))*grid;
 int cabbageY  = floor(random(2,6))*grid;
 int cabbageQuantity = 1;
-final int cabbage_H = 80;
-final int cabbage_W =80;
+final int cabbage_H = 79;
+final int cabbage_W =79;
 
 final int buttonX = 248;
 final int buttonY = 360;
@@ -177,10 +181,10 @@ void draw() {
       
       
       //Sodlier  
-      float soldierUP = soldierY;
-      float soldierDOWN = soldierY+soldier_H;
-      float soldierLEFT = soldierX;
-      float soldierRIGHT = soldierX+soldier_W;
+       soldierUP = soldierY;
+       soldierDOWN = soldierY+soldier_H;
+       soldierLEFT = soldierX;
+       soldierRIGHT = soldierX+soldier_W;
 
         //soldier walking from left to right repeatedly
         soldierX += soldierSpeed;
@@ -201,6 +205,8 @@ void draw() {
               moveLEFT = 0;
               moveRIGHT = 0;
          }
+         
+        
         
       
       //Cabbage
@@ -223,9 +229,7 @@ void draw() {
         //playerHealth
         if(playerHealth == 0){
           gameState = GAME_LOSE;
-          
-          println(groundhogX,groundhogY);
-          println(moveDOWN,moveLEFT,moveRIGHT);
+  
         }
     
     break;
